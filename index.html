@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <script src="./js/jquery-2.2.1.min.js"></script>
+    <script src="./js/config.js" charset="utf-8"></script>
+    <script src="./js/app.js" charset="utf-8"></script>
+    <script src="https://apis.google.com/js/client.js?onload=checkAuth">
+    </script>
+    <link href="./css/bootstrap/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="./js/bootstrap-3.3.6-dist/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link href='./css/font.css' rel='stylesheet' type='text/css'></link>
+    <link rel="stylesheet" href="./style.css" media="screen" title="no title" charset="utf-8"></link>
+  </head>
+  <body>
+    <div id="authorize-div" style="display: none">
+      <span>Authorize access to Gmail API to get started sorting your Gmail Messages!</span>
+      <!--Button for the user to click to initiate auth sequence -->
+      <button id="authorize-button" class="btn btn-default" onclick="handleAuthClick(event)">
+        Authorize with Gmail
+      </button>
+    </div>
+    <div id="container" class="container" style="display:none">
+      <h1>Gmail Sorter!</h1>
+      <ul id="paneSelect" class="nav nav-tabs">
+        <li role="presentation" id="unsorted" class="active"><a onclick="switchToPane('unsorted')">Unsorted Messages</a></li>
+        <li role="presentation" id="accepted"><a onclick="switchToPane('accepted')">Accepted Messages</a></li>
+        <li role="presentation" id="rejected"><a onclick="switchToPane('rejected')">Rejected Messages</a></li>
+      </ul>
+      <button type="button" class="btn btn-default" name="pager" onclick="pageMessages()">Page Messages!</button>
+      <button type="button" name="accept" class="btn btn-success" onclick="acceptMessage()">Accept Message</button>
+      <button type="button" name="reject" class="btn btn-danger" onclick="rejectMessage()">Reject Message</button>
+      <button type="button" name="unsort" class="btn btn-default" onclick="unsortMessage()">Unsort Message</button>
+      <div id="messageList" class="list-group">
+      </div>
+    </div>
+    <pre id="output"></pre>
+  </body>
+</html>
